@@ -31,6 +31,12 @@ const TaskContainer = styled.li`
   &:last-child {
     border-bottom: none;
   }
+  
+  @media (max-width: 480px) {
+    padding: ${p => p.theme.spacing(1)} ${p => p.theme.spacing(1.5)};
+    gap: ${p => p.theme.spacing(0.5)};
+    min-height: 44px;
+  }
 `;
 
 const TaskContent = styled.div`
@@ -51,6 +57,11 @@ const TaskTitle = styled.h3<{ complete: boolean }>`
   overflow-wrap: break-word;
   white-space: normal;
   text-decoration: ${p => p.complete ? 'line-through' : 'none'};
+  
+  @media (max-width: 480px) {
+    font-size: ${p => p.theme.font.size.sm};
+    margin-bottom: ${p => p.theme.spacing(0.3)};
+  }
 `;
 
 const TaskDescription = styled.p<{ complete: boolean; showDescription: boolean }>`
@@ -65,6 +76,10 @@ const TaskDescription = styled.p<{ complete: boolean; showDescription: boolean }
   white-space: normal;
   text-decoration: ${p => p.complete ? 'line-through' : 'none'};
   display: ${p => p.showDescription ? 'block' : 'none'};
+  
+  @media (max-width: 480px) {
+    font-size: ${p => p.theme.font.size.xs};
+  }
 `;
 
 const TaskDate = styled.p`
@@ -74,6 +89,10 @@ const TaskDate = styled.p`
   font-family: ${p => p.theme.font.family};
   line-height: 1.2;
   text-align: left;
+  
+  @media (max-width: 480px) {
+    font-size: ${p => p.theme.font.size.xs};
+  }
 `;
 
 const TaskActions = styled.div`
@@ -82,6 +101,10 @@ const TaskActions = styled.div`
   align-items: flex-start;
   flex-shrink: 0;
   min-width: max-content;
+  
+  @media (max-width: 480px) {
+    gap: ${p => p.theme.spacing(0.3)};
+  }
 `;
 
 const ActionButton = styled.button`
@@ -100,6 +123,16 @@ const ActionButton = styled.button`
   && {
     width: 18px;
     height: 18px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+    
+    && {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -134,6 +167,11 @@ const ExpandButton = styled(ActionButton)<{ showDescription: boolean }>`
 const Icon = styled.img`
   width: 10px;
   height: 10px;
+  
+  @media (max-width: 480px) {
+    width: 8px;
+    height: 8px;
+  }
 `;
 
 function formatDate(date: Date): string {

@@ -13,6 +13,7 @@ export const GlobalStyles = () => (
             html {
                 line-height: 1.15;
                 -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
             }
             
             body {
@@ -23,6 +24,22 @@ export const GlobalStyles = () => (
                 min-height: 100vh;
                 position: relative;
                 overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            
+            #root {
+                width: 100%;
+                min-height: 100vh;
+            }
+            
+            /* Для очень маленьких экранов */
+            @media (max-width: 320px) {
+                body {
+                    font-size: 14px;
+                }
             }
             
             main {

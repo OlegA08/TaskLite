@@ -13,6 +13,18 @@ const Wrapper = styled.div`
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  
+  @media (min-width: 1024px) {
+    padding: ${p => p.theme.spacing(3)};
+  }
+  
+  @media (max-width: 768px) {
+    padding: ${p => p.theme.spacing(2)};
+  }
+  
+  @media (max-width: 480px) {
+    padding: ${p => p.theme.spacing(1)};
+  }
 `;
 
 const Header = styled.h1`
@@ -22,6 +34,11 @@ const Header = styled.h1`
   color: ${p => p.theme.colors.text};
   text-align: center;
   margin-bottom: ${p => p.theme.spacing(2)};
+  
+  @media (max-width: 480px) {
+    font-size: ${p => p.theme.font.size.md};
+    margin-bottom: ${p => p.theme.spacing(1.5)};
+  }
 `;
 
 const InputContainer = styled.div`
@@ -29,6 +46,11 @@ const InputContainer = styled.div`
   gap: ${p => p.theme.spacing(1)};
   margin-bottom: ${p => p.theme.spacing(2)};
   position: relative;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: ${p => p.theme.spacing(1)};
+  }
 `;
 
 const InputWrapper = styled.div`
@@ -56,6 +78,11 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${p => p.theme.colors.textMuted};
   }
+  
+  @media (max-width: 480px) {
+    height: 44px;
+    font-size: 16px; /* Предотвращает зум в iOS */
+  }
 `;
 
 const Counter = styled.span<{ color: string }>`
@@ -82,6 +109,7 @@ const AddButton = styled.button`
   font-family: ${p => p.theme.font.family};
   font-size: ${p => p.theme.font.size.md};
   height: 46px;
+  min-width: 100px;
   
   &:hover {
     background: ${p => p.theme.colors.accentHover};
@@ -91,14 +119,24 @@ const AddButton = styled.button`
     background: ${p => p.theme.colors.border};
     cursor: not-allowed;
   }
+  
+  @media (max-width: 480px) {
+    height: 44px;
+    min-width: auto;
+    width: 100%;
+  }
 `;
 
-// Стили для фильтров
 const FiltersContainer = styled.div`
   display: flex;
   gap: ${p => p.theme.spacing(1)};
   margin-bottom: ${p => p.theme.spacing(2)};
   justify-content: center;
+  flex-wrap: wrap;
+  
+  @media (max-width: 480px) {
+    gap: ${p => p.theme.spacing(0.5)};
+  }
 `;
 
 const FilterButton = styled.button<{ active: boolean }>`
@@ -114,14 +152,22 @@ const FilterButton = styled.button<{ active: boolean }>`
   height: 46px;
   transition: all 0.2s ease;
   border-width: 1px;
+  min-width: 80px;
 
   &:hover {
     background: ${p => p.active ? p.theme.colors.accentHover : p.theme.colors.surface};
     border-color: ${p => p.active ? p.theme.colors.accentHover : p.theme.colors.accent};
   }
+  
+  @media (max-width: 480px) {
+    font-size: ${p => p.theme.font.size.sm};
+    height: 40px;
+    min-width: 70px;
+    padding: ${p => p.theme.spacing(0.8)} ${p => p.theme.spacing(1.5)};
+    flex: 1;
+  }
 `;
 
-// Стили для прогресс-бара
 const ProgressContainer = styled.div`
   margin-bottom: ${p => p.theme.spacing(3)};
 `;
@@ -151,7 +197,6 @@ const FillProgress = styled.div<{ active: number }>`
   transition: width 0.6s ease;
 `;
 
-// Стили для статистики
 const StatsText = styled.p`
   font-family: ${p => p.theme.font.family};
   font-size: ${p => p.theme.font.size.sm};
@@ -159,6 +204,11 @@ const StatsText = styled.p`
   margin: ${p => p.theme.spacing(1)} 0;
   line-height: 1.4;
   text-align: left;
+  
+  @media (max-width: 480px) {
+    text-align: center;
+    font-size: ${p => p.theme.font.size.xs};
+  }
 `;
 
 function makeTask(title: string, description: string = ''): Task {
@@ -184,14 +234,12 @@ export function TasksPage() {
     
   saveToLocalStorage(tasks);
 
-  // Фильтрация задач
   const filteredTasks = tasks.filter(task => {
     if (filter === 'active') return !task.complete;
     if (filter === 'completed') return task.complete;
-    return true; // 'all' - показываем все задачи
+    return true;
   });
 
-  // Расчет прогресса
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter(task => task.complete).length;
   const activeTasks = totalTasks - completedTasks;
@@ -239,7 +287,6 @@ export function TasksPage() {
     }
   }
 
-  // Функция для переключения статуса выполнения задачи
   function handleToggleComplete(id: string) {
     setTasks(tasks.map(t => 
       t.id === id 

@@ -20,6 +20,7 @@ const ModalOverlay = styled.div<{ isOpen: boolean }>`
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: ${p => p.theme.spacing(1)};
 `;
 
 const ModalContent = styled.div`
@@ -29,6 +30,16 @@ const ModalContent = styled.div`
   width: 90%;
   max-width: 500px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin: ${p => p.theme.spacing(2)};
+  max-height: 90vh;
+  overflow-y: auto;
+  
+  @media (max-width: 480px) {
+    padding: ${p => p.theme.spacing(2)};
+    margin: ${p => p.theme.spacing(1)};
+    width: 95%;
+    max-height: 95vh;
+  }
 `;
 
 const ModalTitle = styled.h2`
@@ -38,6 +49,11 @@ const ModalTitle = styled.h2`
   color: ${p => p.theme.colors.text};
   margin-bottom: ${p => p.theme.spacing(2)};
   text-align: center;
+  
+  @media (max-width: 480px) {
+    font-size: ${p => p.theme.font.size.md};
+    margin-bottom: ${p => p.theme.spacing(1.5)};
+  }
 `;
 
 const InputGroup = styled.div`
@@ -78,6 +94,11 @@ const StyledInput = styled.input`
     outline: none;
     border-color: ${p => p.theme.colors.accent};
   }
+  
+  @media (max-width: 480px) {
+    height: 44px;
+    font-size: 16px;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
@@ -96,6 +117,11 @@ const StyledTextarea = styled.textarea`
   &:focus {
     outline: none;
     border-color: ${p => p.theme.colors.accent};
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 16px;
+    min-height: 80px;
   }
 `;
 
@@ -121,6 +147,10 @@ const ButtonGroup = styled.div`
   gap: ${p => p.theme.spacing(1)};
   justify-content: flex-end;
   margin-top: ${p => p.theme.spacing(2)};
+  
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
@@ -132,6 +162,7 @@ const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
   font-family: ${p => p.theme.font.family};
   font-size: ${p => p.theme.font.size.md};
   transition: background-color 0.2s;
+  min-width: 100px;
   
   ${p => p.variant === 'primary' ? `
     background: ${p.theme.colors.accent};
@@ -154,6 +185,11 @@ const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
       background: ${p.theme.colors.background};
     }
   `}
+  
+  @media (max-width: 480px) {
+    width: 100%;
+    min-width: auto;
+  }
 `;
 
 const MAX_TITLE_LENGTH = 30;
@@ -213,7 +249,6 @@ export function EditModal({ task, isOpen, onClose, onSave }: EditModalProps) {
   if (length <= 28) return '#ed8936';
   return '#e53e3e';
   };
-
 
   const getDescriptionCounterColor = (): string => {
   const length = description.length;
