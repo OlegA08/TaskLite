@@ -395,7 +395,7 @@ Error generating stack: `+l.message+`
   margin-bottom: ${i=>i.theme.spacing(2)};
   
   @media (max-width: 480px) {
-    font-size: ${i=>i.theme.font.size.md};
+    font-size: 1.25rem;
     margin-bottom: ${i=>i.theme.spacing(1.5)};
   }
 `,Jy=tt.div`
@@ -417,10 +417,10 @@ Error generating stack: `+l.message+`
   padding-bottom: ${i=>i.theme.spacing(2.9)};
   border: 1px solid ${i=>i.theme.colors.border};
   border-radius: ${i=>i.theme.radius.md};
-  font-size: ${i=>i.theme.font.size.md};
+  font-size: 1rem; /* Фиксированный размер */
   font-family: ${i=>i.theme.font.family};
   background: ${i=>i.theme.colors.surface};
-  height: 46px;
+  height: 50px; /* Увеличил высоту */
   line-height: 1.4;
   
   &:focus {
@@ -433,8 +433,8 @@ Error generating stack: `+l.message+`
   }
   
   @media (max-width: 480px) {
-    height: 44px;
-    font-size: 16px; /* Предотвращает зум в iOS */
+    height: 48px;
+    font-size: 16px;
   }
 `,Fy=tt.span`
   position: absolute;
@@ -456,9 +456,9 @@ Error generating stack: `+l.message+`
   cursor: pointer;
   font-weight: ${i=>i.theme.font.weight.medium};
   font-family: ${i=>i.theme.font.family};
-  font-size: ${i=>i.theme.font.size.md};
-  height: 46px;
-  min-width: 100px;
+  font-size: 1rem; /* Фиксированный размер */
+  height: 50px; /* Увеличил высоту */
+  min-width: 120px; /* Увеличил минимальную ширину */
   
   &:hover {
     background: ${i=>i.theme.colors.accentHover};
@@ -470,7 +470,7 @@ Error generating stack: `+l.message+`
   }
   
   @media (max-width: 480px) {
-    height: 44px;
+    height: 48px;
     min-width: auto;
     width: 100%;
   }
@@ -545,7 +545,7 @@ Error generating stack: `+l.message+`
     font-size: ${i=>i.theme.font.size.xs};
   }
 `;function uv(i,r=""){return{id:Math.random().toString(36).substr(2,9),title:i,description:r||void 0,created:new Date,complete:!1}}const qn=30;function iv(){const[i,r]=ot.useState(""),[d,o]=ot.useState(()=>Vy()),[y,S]=ot.useState(null),[D,H]=ot.useState(!1),[M,x]=ot.useState("all");Ly(d);const U=d.filter(et=>M==="active"?!et.complete:M==="completed"?et.complete:!0),C=d.length,V=d.filter(et=>et.complete).length,ut=C-V,N=C>0?Math.round(V/C*100):0;function Y(et){o(d.filter(Dt=>Dt.id!==et))}function Q(et){if(!et.trim()||et.length>qn)return;const Dt=uv(et);o([Dt,...d]),r("")}function F(et){S(et),H(!0)}function at(et,Dt,kt){o(d.map(Ht=>Ht.id===et?{...Ht,title:Dt,description:kt||void 0}:Ht))}function $(){H(!1),S(null)}function vt(et){et.key==="Enter"&&i.length<=qn&&Q(i)}function _(et){et.length<=qn&&r(et)}function I(et){o(d.map(Dt=>Dt.id===et?{...Dt,complete:!Dt.complete}:Dt))}const W=()=>{const et=i.length;return et===0||et<=20?"#757575":et<=25?"#d69e2e":et<=28?"#ed8936":"#e53e3e"},Bt=i.length>qn;return X.jsxs($y,{children:[X.jsx(Ky,{children:"TaskLite"}),X.jsxs(Jy,{children:[X.jsxs(ky,{children:[X.jsx(Wy,{value:i,onChange:et=>_(et.target.value),onKeyPress:vt,type:"text",placeholder:"Введите задачу"}),X.jsxs(Fy,{color:W(),children:[i.length,"/",qn]})]}),X.jsx(Py,{onClick:()=>Q(i),disabled:!i.trim()||Bt,children:"Добавить"})]}),X.jsxs(Iy,{children:[X.jsx(Yf,{active:M==="all",onClick:()=>x("all"),children:"Все"}),X.jsx(Yf,{active:M==="active",onClick:()=>x("active"),children:"Активные"}),X.jsx(Yf,{active:M==="completed",onClick:()=>x("completed"),children:"Выполненные"})]}),X.jsxs(tv,{children:[X.jsx(lv,{children:X.jsx(av,{active:N})}),X.jsxs(ev,{children:["Завершено: ",N,"%"]})]}),X.jsx(Cy,{tasks:U,onRemove:Y,onEdit:F,onToggleComplete:I}),X.jsxs(nv,{children:["Всего: ",C," | Активных: ",ut," | Выполнено: ",V]}),X.jsx(Zy,{task:y,isOpen:D,onClose:$,onSave:at})]})}const cv=()=>X.jsx(ry,{styles:oy`
-            /* Normalize styles */
+            /* Reset and base styles */
             * {
                 padding: 0;
                 margin: 0;
@@ -556,12 +556,13 @@ Error generating stack: `+l.message+`
                 line-height: 1.15;
                 -webkit-text-size-adjust: 100%;
                 -webkit-tap-highlight-color: transparent;
+                font-size: 100%;
             }
             
             body {
                 margin: 0;
                 font-family: 'Inter', system-ui, sans-serif;
-                font-size: 15px;
+                font-size: 16px;
                 color: rgb(26, 26, 26);
                 min-height: 100vh;
                 position: relative;
@@ -570,27 +571,44 @@ Error generating stack: `+l.message+`
                 max-width: 100vw;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+                line-height: 1.5;
             }
             
             #root {
                 width: 100%;
                 min-height: 100vh;
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin: 0.67em 0;
             }
             
-            /* Для очень маленьких экранов */
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            input, button, textarea {
+                font-size: 1rem;
+            }
+
+            * {
+                transform: none !important;
+            }
+
             @media (max-width: 320px) {
                 body {
                     font-size: 14px;
                 }
             }
-            
+
             main {
                 display: block;
-            }
-            
-            h1 {
-                font-size: 2em;
-                margin: 0.67em 0;
             }
             
             hr {
@@ -653,7 +671,6 @@ Error generating stack: `+l.message+`
             select,
             textarea {
                 font-family: inherit;
-                font-size: 100%;
                 line-height: 1.15;
                 margin: 0;
             }
@@ -732,7 +749,6 @@ Error generating stack: `+l.message+`
                 display: none;
             }
 
-            /* Our custom styles */
             body::before {
                 content: '';
                 position: fixed;
@@ -768,4 +784,4 @@ Error generating stack: `+l.message+`
             ul, ol {
                 list-style: none;
             }
-        `}),fv={colors:{background:"#ffffff",surface:"#fafafa",text:"#1a1a1a",textMuted:"#757575",border:"#e5e5e5",accent:"#9b79cf",accentHover:"#674c8c",error:"#bf616a",success:"#4caf91",warning:"#ebcb8b"},spacing:i=>`${i*8}px`,radius:{sm:"4px",md:"6px",lg:"8px"},font:{family:"'Inter', system-ui, sans-serif",size:{xs:"10px",sm:"14px",md:"15px",lg:"18px"},weight:{regular:400,medium:500,bold:600}}};function rv(){return X.jsxs(ny,{theme:fv,children:[X.jsx(cv,{}),X.jsx(iv,{})]})}v1.createRoot(document.getElementById("root")).render(X.jsx(ot.StrictMode,{children:X.jsx(rv,{})}));
+        `}),fv={colors:{background:"#ffffff",surface:"#fafafa",text:"#1a1a1a",textMuted:"#757575",border:"#e5e5e5",accent:"#9b79cf",accentHover:"#674c8c",error:"#bf616a",success:"#4caf91",warning:"#ebcb8b"},spacing:i=>`${i*8}px`,radius:{sm:"4px",md:"6px",lg:"8px"},font:{family:"'Inter', system-ui, sans-serif",size:{xs:"12px",sm:"14px",md:"16px",lg:"20px"},weight:{regular:400,medium:500,bold:600}}};function rv(){return X.jsxs(ny,{theme:fv,children:[X.jsx(cv,{}),X.jsx(iv,{})]})}v1.createRoot(document.getElementById("root")).render(X.jsx(ot.StrictMode,{children:X.jsx(rv,{})}));
