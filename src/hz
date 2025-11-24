@@ -1,0 +1,29 @@
+```
+export function TasksPage() {
+  const [task, setTask] = useState('');
+
+  const students = [
+    { id: 1, name: 'Oner' },
+    { id: 2, name: 'Ombra' },
+    { id: 3, name: 'Esreний' },
+    { id: 4, name: 'Ombra' },
+    { id: 5, name: 'Anastasiya' },
+    { id: 6, name: 'Elizaveta' },
+  ];
+
+  return (
+    <Wrapper>
+      <StyledInput
+        value={task}
+        onChange={event => setTask(event.target.value)}
+      />
+      <p>{task}</p>
+      <ul>
+        {students.map(user => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </Wrapper>
+  );
+}
+```
