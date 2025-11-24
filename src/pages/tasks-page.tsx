@@ -36,7 +36,7 @@ const Header = styled.h1`
   margin-bottom: ${p => p.theme.spacing(2)};
   
   @media (max-width: 480px) {
-    font-size: ${p => p.theme.font.size.md};
+    font-size: 1.25rem;
     margin-bottom: ${p => p.theme.spacing(1.5)};
   }
 `;
@@ -64,10 +64,10 @@ const StyledInput = styled.input`
   padding-bottom: ${p => p.theme.spacing(2.9)};
   border: 1px solid ${p => p.theme.colors.border};
   border-radius: ${p => p.theme.radius.md};
-  font-size: ${p => p.theme.font.size.md};
+  font-size: 1rem; /* Фиксированный размер */
   font-family: ${p => p.theme.font.family};
   background: ${p => p.theme.colors.surface};
-  height: 46px;
+  height: 50px; /* Увеличил высоту */
   line-height: 1.4;
   
   &:focus {
@@ -80,10 +80,11 @@ const StyledInput = styled.input`
   }
   
   @media (max-width: 480px) {
-    height: 44px;
-    font-size: 16px; /* Предотвращает зум в iOS */
+    height: 48px;
+    font-size: 16px;
   }
 `;
+
 
 const Counter = styled.span<{ color: string }>`
   position: absolute;
@@ -107,9 +108,9 @@ const AddButton = styled.button`
   cursor: pointer;
   font-weight: ${p => p.theme.font.weight.medium};
   font-family: ${p => p.theme.font.family};
-  font-size: ${p => p.theme.font.size.md};
-  height: 46px;
-  min-width: 100px;
+  font-size: 1rem; /* Фиксированный размер */
+  height: 50px; /* Увеличил высоту */
+  min-width: 120px; /* Увеличил минимальную ширину */
   
   &:hover {
     background: ${p => p.theme.colors.accentHover};
@@ -121,7 +122,7 @@ const AddButton = styled.button`
   }
   
   @media (max-width: 480px) {
-    height: 44px;
+    height: 48px;
     min-width: auto;
     width: 100%;
   }

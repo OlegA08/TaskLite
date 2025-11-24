@@ -22,10 +22,10 @@ export const theme = {
   font: {
     family: "'Inter', system-ui, sans-serif",
     size: {
-      xs: "10px",
+      xs: "12px",
       sm: "14px",
-      md: "15px",
-      lg: "18px"
+      md: "16px",
+      lg: "20px"
     },
     weight: {
       regular: 400,

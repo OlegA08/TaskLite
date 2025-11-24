@@ -3,7 +3,7 @@ import { Global, css } from '@emotion/react';
 export const GlobalStyles = () => (
     <Global
         styles={css`
-            /* Normalize styles */
+            /* Reset and base styles */
             * {
                 padding: 0;
                 margin: 0;
@@ -14,12 +14,13 @@ export const GlobalStyles = () => (
                 line-height: 1.15;
                 -webkit-text-size-adjust: 100%;
                 -webkit-tap-highlight-color: transparent;
+                font-size: 100%;
             }
             
             body {
                 margin: 0;
                 font-family: 'Inter', system-ui, sans-serif;
-                font-size: 15px;
+                font-size: 16px;
                 color: rgb(26, 26, 26);
                 min-height: 100vh;
                 position: relative;
@@ -28,27 +29,44 @@ export const GlobalStyles = () => (
                 max-width: 100vw;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+                line-height: 1.5;
             }
             
             #root {
                 width: 100%;
                 min-height: 100vh;
+                font-size: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin: 0.67em 0;
             }
             
-            /* Для очень маленьких экранов */
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            input, button, textarea {
+                font-size: 1rem;
+            }
+
+            * {
+                transform: none !important;
+            }
+
             @media (max-width: 320px) {
                 body {
                     font-size: 14px;
                 }
             }
-            
+
             main {
                 display: block;
-            }
-            
-            h1 {
-                font-size: 2em;
-                margin: 0.67em 0;
             }
             
             hr {
@@ -111,7 +129,6 @@ export const GlobalStyles = () => (
             select,
             textarea {
                 font-family: inherit;
-                font-size: 100%;
                 line-height: 1.15;
                 margin: 0;
             }
@@ -190,7 +207,6 @@ export const GlobalStyles = () => (
                 display: none;
             }
 
-            /* Our custom styles */
             body::before {
                 content: '';
                 position: fixed;
