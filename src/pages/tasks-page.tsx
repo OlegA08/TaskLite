@@ -14,16 +14,28 @@ const Wrapper = styled.div`
   width: 100%;
   overflow-x: hidden;
   
+  /* НОВАЯ ОБЁРТКА - КУБ В РАМКЕ */
+  border: 2px solid ${p => p.theme.colors.border};
+  border-radius: ${p => p.theme.radius.lg};
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: ${p => p.theme.spacing(2)};
+  margin-bottom: ${p => p.theme.spacing(2)};
+  min-height: calc(100vh - ${p => p.theme.spacing(4)});
+  
   @media (min-width: 1024px) {
     padding: ${p => p.theme.spacing(3)};
   }
   
   @media (max-width: 768px) {
     padding: ${p => p.theme.spacing(2)};
+    margin: ${p => p.theme.spacing(1)};
+    min-height: calc(100vh - ${p => p.theme.spacing(2)});
   }
   
   @media (max-width: 480px) {
     padding: ${p => p.theme.spacing(1)};
+    margin: ${p => p.theme.spacing(0.5)};
+    min-height: calc(100vh - ${p => p.theme.spacing(1)});
   }
 `;
 
