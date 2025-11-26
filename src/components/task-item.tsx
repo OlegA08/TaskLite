@@ -103,13 +103,13 @@ const TaskActions = styled.div`
   min-width: max-content;
   
   @media (max-width: 480px) {
-    gap: ${p => p.theme.spacing(0.3)};
+    gap: ${p => p.theme.spacing(0.5)};
   }
 `;
 
 const ActionButton = styled.button`
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   border-radius: ${p => p.theme.radius.sm};
   background: transparent;
   cursor: pointer;
@@ -121,17 +121,17 @@ const ActionButton = styled.button`
   border: none;
   
   && {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
   }
   
   @media (max-width: 480px) {
-    width: 16px;
-    height: 16px;
+    width: 28px;
+    height: 28px;
     
     && {
-      width: 16px;
-      height: 16px;
+      width: 28px;
+      height: 28px;
     }
   }
 `;
@@ -169,8 +169,8 @@ const Icon = styled.img`
   height: 10px;
   
   @media (max-width: 480px) {
-    width: 8px;
-    height: 8px;
+    width: 16px;
+    height: 16px;
   }
 `;
 

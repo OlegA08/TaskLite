@@ -230,14 +230,18 @@ export function EditModal({ task, isOpen, onClose, onSave }: EditModalProps) {
   };
 
   const handleTitleChange = (value: string) => {
-    if (value.length <= MAX_TITLE_LENGTH) {
-      setTitle(value);
+  if (value.length <= MAX_TITLE_LENGTH) {
+    setTitle(value);
+  } else {
+    setTitle(value.slice(0, MAX_TITLE_LENGTH));
     }
   };
 
-  const handleDescriptionChange = (value: string) => {
-    if (value.length <= MAX_DESCRIPTION_LENGTH) {
-      setDescription(value);
+const handleDescriptionChange = (value: string) => {
+  if (value.length <= MAX_DESCRIPTION_LENGTH) {
+    setDescription(value);
+  } else {
+    setDescription(value.slice(0, MAX_DESCRIPTION_LENGTH));
     }
   };
 

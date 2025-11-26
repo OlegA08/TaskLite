@@ -64,10 +64,10 @@ const StyledInput = styled.input`
   padding-bottom: ${p => p.theme.spacing(2.9)};
   border: 1px solid ${p => p.theme.colors.border};
   border-radius: ${p => p.theme.radius.md};
-  font-size: 1rem; /* Фиксированный размер */
+  font-size: 1rem;
   font-family: ${p => p.theme.font.family};
   background: ${p => p.theme.colors.surface};
-  height: 50px; /* Увеличил высоту */
+  height: 50px;
   line-height: 1.4;
   
   &:focus {
@@ -81,6 +81,7 @@ const StyledInput = styled.input`
   
   @media (max-width: 480px) {
     height: 48px;
+    font-size: 16px;
     font-size: 16px;
   }
 `;
@@ -283,10 +284,15 @@ export function TasksPage() {
   }
 
   function handleInputChange(value: string) {
-    if (value.length <= MAX_TITLE_LENGTH) {
-      setTask(value);
+  // Фикс: не даем ввести больше лимита
+  if (value.length <= MAX_TITLE_LENGTH) {
+    setTask(value);
+  } else {
+    // Если превысили лимит, обрезаем до максимума
+    setTask(value.slice(0, MAX_TITLE_LENGTH));
     }
   }
+
 
   function handleToggleComplete(id: string) {
     setTasks(tasks.map(t => 
